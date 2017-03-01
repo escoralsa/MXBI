@@ -1,0 +1,27 @@
+<%= grid(@stores_grid) do |g|
+
+  g.column name:  'ID',  attribute: 'sid'  do |store|
+    store.sid
+  end
+
+  g.column name:  'Name',  attribute: 'stname' do |store|
+    store.stname
+  end
+
+  g.column name:  'Address',  attribute: 'staddr1' do |store|
+    store.staddr1
+  end
+
+  g.column  name:  'Address2',  attribute: 'staddr2' do |store|
+    store.staddr2
+  end
+
+
+  g.column  name:  'City',  attribute: 'stcity' do |store|
+    store.stcity
+  end
+
+  g.column do |store|
+    link_to('Edit', edit_store_path(store))
+  end
+end -%>

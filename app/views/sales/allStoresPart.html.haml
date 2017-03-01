@@ -1,0 +1,44 @@
+/ page content
+.right_col{:role => "main"}
+  %div
+    .page-title
+      .title_left
+        %h3
+    .clearfix
+      -# Render smart listing controls form
+      = smart_listing_controls_for(:itemsLineAllStores, {class: "form-inline text-right"}) do
+        -# Add search box to form - it submits the form automatically on text change
+        .form-group.filter.input-append
+      %form.form-horizontal
+        %fieldset
+          / Form Name
+          %legend PARTES MAS VENDIDAS TODAS LAS TIENDAS POR LINEA
+          = @titulo
+          / Select Basic
+          .form-group
+            %label.col-md-4.control-label{:for => "linea"} Linea:
+            .col-md-4
+              %input#line.form-control.input-md{:name => "line", :placeholder => "Linea", :required => "", :type => "text"}/
+          / Select Basic
+          .form-group
+            %label.col-md-4.control-label{:for => "parte"} Parte:
+            .col-md-4
+              %input#part.form-control.input-md{:name => "part", :placeholder => "Parte", :required => "", :type => "text"}/
+          / Text input
+          .form-group
+            %label.col-md-4.control-label{:for => "start_date"} Inicio
+            .col-md-4
+              %input#start_date.form-control.input-md{:name => "start_date", :placeholder => "Fecha Inicio", :required => "", :type => "text"}/
+          / Text input
+          .form-group
+            %label.col-md-4.control-label{:for => "end_date"} Inicio
+            .col-md-4
+              %input#end_date.form-control.input-md{:name => "end_date", :placeholder => "Fecha Final", :required => "", :type => "text"}/
+          / Button
+          .form-group
+            %label.col-md-4.control-label{:for => "submit"}
+            .col-md-4
+              %button#submit.btn.btn-primary{:name => "submit", "data-disable-with" => '<i class="fa fa-spinner fa-spin""></i> Cargando...'} Buscar
+      -# Render list
+      = smart_listing_render :itemsPartAllStores
+

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Id:</strong>
+  <%= @sale.id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @sale.date %>
+</p>
+
+<p>
+  <strong>Sid:</strong>
+  <%= @sale.sid %>
+</p>
+
+<p>
+  <strong>Line:</strong>
+  <%= @sale.line %>
+</p>
+
+<p>
+  <strong>Part:</strong>
+  <%= @sale.part %>
+</p>
+
+<p>
+  <strong>Sell:</strong>
+  <%= @sale.sell %>
+</p>
+
+<p>
+  <strong>Qtysold:</strong>
+  <%= @sale.qtysold %>
+</p>
+
+<%= link_to 'Edit', edit_sale_path(@sale) %> |
+<%= link_to 'Back', sales_path %>

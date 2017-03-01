@@ -1,0 +1,17 @@
+- unless smart_listing.empty?
+  %table.table.table-striped
+    %thead
+      %th.col-md-3= "LINEA : " +  (@nombre_linea || "")
+      %th.col-md-3= "TOTAL : " +  (@total || "")#total #@ticketGroup.sort_by { |line, total| total } #
+    %tbody
+      - smart_listing.collection.each do |line,total|
+        %tr
+          %td= link_to(line, linea: line, start_date: @start_date, end_date: @end_date, tienda: @tienda)  # edit_store_path(@store)  edit_ticket_item_path)
+          %td= total
+  -# User row goes here...
+
+  -# Render nice pagination links fitted for Bootstrap 3 by default
+  = smart_listing.paginate
+  = smart_listing.pagination_per_page_links
+- else
+  %p.warning No records!

@@ -1,0 +1,39 @@
+/ page content
+.right_col{:role => "main"}
+  %div
+    .page-title
+      .title_left
+        %h3
+    .clearfix
+      -# Render smart listing controls form
+      = smart_listing_controls_for(:itemsAllYearLine, {class: "form-inline text-right"}) do
+        -# Add search box to form - it submits the form automatically on text change
+        .form-group.filter.input-append
+      %form.form-horizontal
+        %fieldset
+          / Form Name
+          %legend VENTAS POR ANUALES POR LINEA/TIENDA/MES
+          = @titulo
+          / Select Basic
+          .form-group
+            %label.col-md-4.control-label{:for => "year"} Year:
+            .col-md-4
+              %input#year.form-control.input-md{:name => "year", :placeholder => "Year", :required => "", :type => "text"}/
+          / Select Basic
+          .form-group
+            %label.col-md-4.control-label{:for => "linea"} Linea:
+            .col-md-4
+              %input#line.form-control.input-md{:name => "line", :placeholder => "Linea", :required => "", :type => "text"}/
+          / Select Basic
+          .form-group
+            %label.col-md-4.control-label{:for => "tienda"} Tienda:
+            .col-md-4
+              =select_tag "tienda", options_from_collection_for_select(Store.select("sid"), :sid, :sid) , :class => "form-control"
+          / Button
+          .form-group
+            %label.col-md-4.control-label{:for => "submit"}
+            .col-md-4
+              %button#submit.btn.btn-primary{:name => "submit", "data-disable-with" => '<i class="fa fa-spinner fa-spin""></i> Cargando...'} Buscar
+      -# Render list
+      = smart_listing_render :itemsAllYearLine
+      = high_chart("some_id", @chart)

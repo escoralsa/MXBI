@@ -1,0 +1,28 @@
+<%= define_grid(@sales_grid, hide_submit_button: true, hide_reset_button: true) do |g|
+
+  g.column name:  'Sid', attribute: 'sid', detach_with_id: :sid_filter do |sale|
+    sale.sid
+  end
+
+  g.column name:  'Date', attribute: 'date'  do |sale|
+    sale.date
+  end
+
+  g.column name:  'Line', attribute: 'line', detach_with_id: :line_filter do |sale|
+    sale.line
+  end
+
+  g.column name:  'Part',  attribute: 'part', detach_with_id: :part_filter do |sale|
+    sale.part
+  end
+
+  g.column name:  'Sell',  attribute: 'sell', filter_type: :decimal do |sale|
+    number_to_currency(sale.sell)
+  end
+
+  g.column name:  'QtySold',  attribute: 'qtysold', filter_type: :decimal  do |sale|
+    sale.qtysold.to_i
+  end
+
+
+end -%>
